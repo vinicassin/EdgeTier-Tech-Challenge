@@ -1,0 +1,30 @@
+{
+  "name": "edgetier-tech-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "test:smoke": "playwright test --grep @smoke"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinicassin/EdgeTier-Tech-Challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinicassin/EdgeTier-Tech-Challenge/issues"
+  },
+  "homepage": "https://github.com/vinicassin/EdgeTier-Tech-Challenge#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}
