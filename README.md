@@ -77,15 +77,15 @@ export BASE_URL=https://your-instance.edgetier.com
 ## GitHub Actions (CI)
 
 There is a GitHub Actions workflow at `.github/workflows/playwright.yml` that runs Playwright tests on pushes and pull requests to `main` (and `master`). By default the workflow runs the smoke test suite and uploads the Playwright HTML report as an artifact.
-```
+
 
 ## Tagging tests
 
 Tag tests by adding a tag in the test title or describe block. Example:
 
-```ts
+```
 test('should allow agent to reply to user [@smoke]', async ({ page }) => { ... });
 
-// run with:
+run with:
 npx playwright test --grep @smoke
 ```
