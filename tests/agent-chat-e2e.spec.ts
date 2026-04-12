@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage, UserType } from '../pages/LogInPage';
+import { test } from '@playwright/test';
+import { LoginPage, UserType } from '../pages/LoginPage';
 import { MenuComponent } from '../components/MenuComponent';
 import { ChatPage } from '../pages/ChatPage';
 
