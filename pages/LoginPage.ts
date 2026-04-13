@@ -8,7 +8,7 @@ export enum UserType {
 }
 
 export class LoginPage {
-  readonly page: Page;
+  private readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;

@@ -1,9 +1,11 @@
 import { Page, Locator, expect } from '@playwright/test';
-import { ActiveChatPage } from '../components/ActiveChatComponent';
+import { ActiveChatComponent } from '../components/ActiveChatComponent';
+import { ChatListComponent } from '../components/ChatListComponent';
 
 export class ChatPage {
-    readonly page: Page;
-    readonly activeChat: ActiveChatPage;
+    private readonly page: Page;
+    private readonly activeChat: ActiveChatComponent;
+    private readonly chatList: ChatListComponent;
     private readonly endChatButton: Locator;
     private readonly note: Locator;
     private readonly notificationEndedChat: Locator;
@@ -13,7 +15,8 @@ export class ChatPage {
 
     constructor(page: Page) {
         this.page                    = page;
-        this.activeChat              = new ActiveChatPage(page);
+        this.activeChat              = new ActiveChatComponent(page);
+        this.chatList                = new ChatListComponent(page);
         this.endChatButton           = page.getByRole('button', { name: 'End Chat' });
         this.note                    = page.getByRole('textbox', { name: 'Note' });
         this.notificationEndedChat   = page.getByRole('status');
@@ -31,18 +34,19 @@ export class ChatPage {
         await this.activeChat.acceptSuggestedResponse()
     }
 
-    async endChat(message: string) {
-        this.endChatButton.click()
-        
-        await expect(this.dispositionCodeCategory).toBeVisible();
-        await expect(this.dispositionCodeCategory).toBeEnabled();
-        await this.dispositionCodeCategory.click();
+    async selectChatByIndex(index: number) {
+        await this.chatList.selectChat(index)
+    }
 
+    async endChat(message: string) {        
+        await this.endChatButton.click()
+        await this.dispositionCodeCategory.click();
         await this.page.getByRole('option', { name: 'Add Extras' }).click();
 
         await this.dispositionCode.click();
-        // Here we can create the same solution in loginPage with enum and all possibilities
         await this.page.getByRole('option', { name: 'Additional Driver' }).click();
+        // Here we can create the same solution in loginPage with enum and all possibilities
+        
         await this.note.fill(message);
         await this.submitAsComplete.click();
     }

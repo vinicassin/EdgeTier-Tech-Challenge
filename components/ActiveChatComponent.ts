@@ -1,8 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test';
 
-export class ActiveChatPage {
-  readonly page: Page;
-
+export class ActiveChatComponent {
+  private readonly page: Page;
   private readonly messageInput: Locator;
   private readonly sendButton: Locator;
   private readonly customerName: Locator;
