@@ -32,8 +32,6 @@ export class ActiveChatComponent {
     this.page.getByRole("img", { name: "button-icon", exact: true })
   }
 
-  // page.getByText("Non-Amendable?", { exact: true }).locator("button.button.button--outline.button--icon.button--small.button--positive")
-
   async dismissSuggestedResponse(cardTitle: string) {
     const card = this.page.locator('[data-testid="suggested-response-card"]')
       .filter({ hasText: cardTitle });

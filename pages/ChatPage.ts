@@ -1,6 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { ActiveChatComponent } from '../components/ActiveChatComponent';
 import { ChatListComponent } from '../components/ChatListComponent';
+import { NOTIFICATIONS } from '../fixtures/chat.fixtures';
 
 export class ChatPage {
     private readonly page: Page;
@@ -51,8 +52,8 @@ export class ChatPage {
         await this.submitAsComplete.click();
     }
 
-    async validateEndedChat(message: string) {
-        await expect(this.notificationEndedChat.filter({ hasText: 'Chat Ended' })).toBeVisible();
-        await expect(this.notificationEndedChat).toContainText("Successfully finished chat with customer");
+    async validateEndedChat() {
+        await expect(this.notificationEndedChat.filter({ hasText: NOTIFICATIONS.chatEndedTitle })).toBeVisible();
+        await expect(this.notificationEndedChat).toContainText(NOTIFICATIONS.chatEndedMessage);
     }
 }
