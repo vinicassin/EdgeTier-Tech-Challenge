@@ -1,8 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test';
 
-export class ActiveChatPage {
-  readonly page: Page;
-
+export class ActiveChatComponent {
+  private readonly page: Page;
   private readonly messageInput: Locator;
   private readonly sendButton: Locator;
   private readonly customerName: Locator;
@@ -32,8 +31,6 @@ export class ActiveChatPage {
   async acceptSuggestedResponse() {
     this.page.getByRole("img", { name: "button-icon", exact: true })
   }
-
-  // page.getByText("Non-Amendable?", { exact: true }).locator("button.button.button--outline.button--icon.button--small.button--positive")
 
   async dismissSuggestedResponse(cardTitle: string) {
     const card = this.page.locator('[data-testid="suggested-response-card"]')

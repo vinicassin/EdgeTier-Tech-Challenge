@@ -1,8 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 
 export class MenuComponent {
-  readonly page: Page;
-
+  private readonly page: Page;
   private readonly chatLink: Locator;
   private readonly homeLink: Locator;
   private readonly emailLink: Locator;
@@ -22,6 +21,7 @@ export class MenuComponent {
 
   async goToChat() {
     await this.chatLink.click();
+    await this.page.waitForLoadState('networkidle');
   }
 
   async goToHome() {

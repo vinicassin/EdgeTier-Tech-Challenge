@@ -1,8 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test';
 
-export class CustomerDetailsPanelPage {
-  readonly page: Page;
-
+export class CustomerDetailsPanelComponent {
+  private readonly page: Page;
   private readonly chatDetailsTab: Locator;
   private readonly propertyDetailsTab: Locator;
   private readonly historyTab: Locator;

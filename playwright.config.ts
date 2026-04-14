@@ -3,6 +3,9 @@ import * as dotenv from 'dotenv';
 
 export default defineConfig({
   testDir: './tests',
+  fullyParallel: true,
+  workers: 2,
+  retries: 1,
 
   reporter: [
     ['list'],

@@ -1,8 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test';
 
-export class ChatListPage {
-  readonly page: Page;
-
+export class ChatListComponent {
+  private readonly page: Page;
   private readonly chatItems: Locator;
   private readonly maxChatsWarning: Locator;
 
@@ -10,6 +9,10 @@ export class ChatListPage {
     this.page = page;
     this.chatItems = page.locator('[data-testid="chat-list-item"]');
     this.maxChatsWarning = page.getByText('You are currently handling the maximum number of chats');
+  }
+
+  async selectChat(index: number) {
+    await this.page.locator('.chat-list-item__content').nth(index).click();
   }
 
   async selectChatByCustomerName(name: string) {
@@ -22,11 +25,4 @@ export class ChatListPage {
     ).toBeVisible({ timeout: 10_000 });
   }
 
-  async isAtMaxCapacity(): Promise<boolean> {
-    return this.maxChatsWarning.isVisible();
-  }
-
-  async getOpenChatsCount(): Promise<number> {
-    return this.chatItems.count();
-  }
 }

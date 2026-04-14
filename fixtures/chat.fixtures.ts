@@ -9,3 +9,8 @@ export const SUGGESTED_RESPONSES = {
   delay: 'Please hold on, I will investigate this for you now.',
   nonAmendable: 'I can see that you have purchased a non-amendable booking',
 };
+
+export const NOTIFICATIONS = {
+  chatEndedTitle: 'Chat Ended',
+  chatEndedMessage: 'Successfully finished chat with customer'
+};
