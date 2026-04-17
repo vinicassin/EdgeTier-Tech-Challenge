@@ -87,5 +87,10 @@ Tag tests by adding a tag in the test title or describe block. Example:
 test('should allow agent to reply to user [@smoke]', async ({ page }) => { ... });
 
 run with:
-npx playwright test --grep @smoke
+npm test         -- Run all testes
+npm test:headed  -- Run all testes, with visible browser
+npm test:report  -- Show report
+npm test:smoke   -- Run all tests with tag @smoke 
+
+
 ```
