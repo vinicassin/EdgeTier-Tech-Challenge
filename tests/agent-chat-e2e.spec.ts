@@ -1,18 +1,9 @@
-import { test } from '@playwright/test';
-import { LoginPage, UserType } from '../pages/LoginPage';
 import { MenuComponent } from '../components/MenuComponent';
 import { ChatPage } from '../pages/ChatPage';
-
+import { test } from '../fixtures/utils.fixtures';
 
 test.describe('E2E — Chat Flow', () => {
-
-  test.beforeEach(async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    await page.goto('/');
-    await loginPage.loginAs(UserType.Agent);
-  });
-  
-  test('should allow agent to reply to user and complete chat successfully without using suggestions @smoke @test-0001 @chat-feature @e2e', async ({ page }) => {
+  test('should allow agent to reply to user and complete chat successfully without using suggestions @smoke @test-0001 @chat-feature @e2e', async ({ page, loginPage }) => {
     const menuComponent = new MenuComponent(page);
     const chatPage = new ChatPage(page);
     const CHAT_CLOSED_MESSAGE = "The chat was closed due to lack of information."
